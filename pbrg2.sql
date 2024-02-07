@@ -17,47 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
- CREATE TABLE pbrg2;
---
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `aluguel`
---
-
-CREATE TABLE `aluguel` (
-  `id_usuario` int(4) DEFAULT NULL,
-  `id_imovel` int(4) DEFAULT NULL,
-  `valor` double(10,2) DEFAULT NULL,
-  `id_aluguel` int(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `avaliacao`
---
-
-CREATE TABLE `avaliacao` (
-  `id_usuario` int(4) DEFAULT NULL,
-  `id_imovel` int(4) DEFAULT NULL,
-  `id_avaliacao` int(4) NOT NULL,
-  `nota` double(2,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `endereco`
---
-
-CREATE TABLE `endereco` (
-  `CEP` varchar(50) DEFAULT NULL,
-  `complemento` varchar(100) DEFAULT NULL,
-  `id_endereco` int(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE DATABASE pbrg2;
 
 -- --------------------------------------------------------
 
@@ -126,28 +86,6 @@ INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `senha`) VALUES
 --
 -- Índices para tabelas despejadas
 --
-
---
--- Índices para tabela `aluguel`
---
-ALTER TABLE `aluguel`
-  ADD PRIMARY KEY (`id_aluguel`),
-  ADD KEY `id_usuario` (`id_usuario`),
-  ADD KEY `id_imovel` (`id_imovel`);
-
---
--- Índices para tabela `avaliacao`
---
-ALTER TABLE `avaliacao`
-  ADD PRIMARY KEY (`id_avaliacao`),
-  ADD KEY `id_usuario` (`id_usuario`),
-  ADD KEY `id_imovel` (`id_imovel`);
-
---
--- Índices para tabela `endereco`
---
-ALTER TABLE `endereco`
-  ADD PRIMARY KEY (`id_endereco`);
 
 --
 -- Índices para tabela `imovel`

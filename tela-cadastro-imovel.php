@@ -1,7 +1,17 @@
+<?php
+session_start();
+if(!isset($_SESSION['id_usuario']))
+{
+    header("location: index.php");
+    exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-   
+
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +35,9 @@
          <nav>
             <a class="opcoes" href="tela-meus-imoveis.php">Meus imoveis</a>
          </nav>
+         <nav>
+            <a class="opcoes" href="sair.php">LOGOUT</a>
+         </nav>
          <div class="hamburger">
          <div id="bar1" class="bar"></div>
          <div id="bar2" class="bar"></div>
@@ -33,10 +46,11 @@
       <aside class="sidebar">
          <nav>
             <ul class="menu">
-               <li class="menu-item"><a href="#" class="menu-link">Locação</a></li>
+               <li class="menu-item"><a href="tela-locacao.php" class="menu-link">Locação</a></li>
                <li class="menu-item"><a href="tela-vantagens.php" class="menu-link">Vantagens</a></li>
-               <li class="menu-item"><a href="tela-cadastro-imovel.php" class="menu-link">Cadastrar imoveis</a></li>
+               <li class="menu-item"><a href="#" class="menu-link">Cadastrar imoveis</a></li>
                <li class="menu-item"><a href="tela-meus-imoveis.php" class="menu-link">Meus imoveis</a></li>
+               <li class="menu-item"><a href="sair.php" class="menu-link">LOGOUT</a></li>
             </ul>
          </nav>
       </aside>
@@ -46,13 +60,19 @@
    ?><php>
       
 
-<form action="gravar.php" method="POST" enctype="multipart/form-data">
+<form id="form" class="form" action="gravar.php" method="POST" enctype="multipart/form-data">
         
+   <div class="form-control">
 		<label for="telefone">Contato:</label><br>
-    <input type="text" name="telefone"><br><br>
+    <input type="text" name="telefone" id="telefone">
+    <small></small><br><br>
+   </div>
 
-    <label for="mensalidade">Preço diário:</label><br>
-        <input type="text" name="mensalidade"><br><br>
+   <div class="form-control">
+    <label for="mensalidade">Preço Diário:</label><br>
+        <input type="text" name="mensalidade" id="mensalidade">
+        <small></small><br><br>
+   </div>
     
         <label for="selecao">Selecione o tipo do imóvel</label><br>
     <select name="selecao">
@@ -80,19 +100,28 @@
     <option value="florianopolis">Florianópolis</option>
 </select><br><br>
 
-<label for="descricao">Insira a descrição do imóvel:</label><br>
-<textarea name="descricao" cols="30" rows="5"></textarea><br><br>
+   <div class="form-control">
+   <label for="descricao">Insira a descrição do imóvel:</label><br>
+   <textarea name="descricao" id="descricao" cols="30" rows="5"></textarea>
+   <small></small><br><br>
+   </div>
 
-
+   <div class="form-control">
 <label for="imagem">Imagem:</label>
-		<input type="file" name="imagem"/>
-		<br>
+		<input type="file" name="imagem" id="imagem"/>
+      </div><br>
 
 		<input type="submit" value="Enviar"/>
+
 	</form>
 
-</body>
-<script src="./scripts/script.js">
+   <div class="centro">
+      <a href="https://discord.com/"><img class="icones" src="img/discord.svg"></a>
+      <a href="https://x.com/GabrielHas98423?t=cpjRFAMSOKlflZjwScHZRw&s=08"><img class="icones" src="img/twitter-x.svg"></a>
+      <a href="https://wa.me/qr/JYNU42NBHTLAF1"><img class="icones" src="img/whatsapp.svg"></a>
+    </div>
 
-   </script>
+</body>
+<script src="./scripts/script.js"></script>
+   <script src="./scripts/validacao.js"></script>
 </html>

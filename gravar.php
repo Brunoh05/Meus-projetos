@@ -5,6 +5,16 @@
         <link rel="stylesheet" href="CSS/cadastro-efetuado.css">
     </head>
 <?php
+session_start();
+
+// Verifica se a sessão e o id_usuario estão definidos
+if(isset($_SESSION['id_usuario'])) {
+    $id_usuario = $_SESSION['id_usuario'];
+
+    // Restante do seu código...
+
+}
+  $id_usuario = $_SESSION['id_usuario'];
 $host = "localhost";
 $username = "root";
 $password = "";
@@ -74,7 +84,7 @@ else {
 
         $query ="INSERT INTO  imovel VALUES (?,?,?,?,?,?,?,?,?)";
         $stmt = mysqli_prepare($conn, $query);
-        $codusuario = 0; //remover
+        $codusuario =  $_SESSION['id_usuario']; //remover
         $desc = $_POST['descricao'];
         $codimovel = 0; //remover
         $status = $_POST['status'];

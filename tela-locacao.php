@@ -3,6 +3,14 @@ $host = "localhost";
 $username = "root";
 $password = "";
 $db = "pbrg2";
+session_start();
+
+// Verifica se o usuário não está logado
+if (!isset($_SESSION['id_usuario'])) {
+    // Redireciona para a página de login
+    header('Location: index.php');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -31,6 +39,9 @@ $db = "pbrg2";
       <nav>
          <a class="opcoes" href="tela-meus-imoveis.php">Meus imoveis</a>
       </nav>
+      <nav>
+            <a class="opcoes" href="sair.php">LOGOUT</a>
+      </nav>
       <div class="hamburger">
          <div id="bar1" class="bar"></div>
          <div id="bar2" class="bar"></div>
@@ -43,13 +54,14 @@ $db = "pbrg2";
                <li class="menu-item"><a href="tela-vantagens.php" class="menu-link">Vantagens</a></li>
                <li class="menu-item"><a href="tela-cadastro-imovel.php" class="menu-link">Cadastrar imoveis</a></li>
                <li class="menu-item"><a href="tela-meus-imoveis.php" class="menu-link">Meus imoveis</a></li>
+               <li class="menu-item"><a href="sair.php" class="menu-link">LOGOUT</a></li>
             </ul>
          </nav>
       </aside>
     </div>
     <?php 
     include("conexao.php");
-    session_start();
+    
     echo "<h1 class='nome'>Bem-vindo(a),  ".$_SESSION['login']."!</h1>";
     ?><php> 
       
@@ -181,7 +193,7 @@ $db = "pbrg2";
         <!-- DIV IMOVEL apenas serve para dar um padding Y -->
         <div id="imovel" class=" py-6">
           <!-- CARD - apresenta as informações do imovel -->
-          <div class="card shadow-sm">
+          <div class="card shadow-sm" id="inf-imovel">
           <a href="pagina-ampliada-informacoes.php?id=<?php echo $dados['id_imovel']; ?>"> <!-- Adicione um link com o ID do imóvel -->
             <img class="bd-placeholder-img card-img-top" width="50%" height="225" src="<?php echo $dados['imgURL']; ?>"
               xmlns="http://www.w3.org/2000/svg" role="img" >         

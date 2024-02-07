@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(!isset($_SESSION['id_usuario']))
+{
+    header("location: index.php");
+    exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,6 +34,9 @@
          <nav>
             <a class="opcoes" href="tela-meus-imoveis.php">Meus imoveis</a>
          </nav>
+         <nav>
+            <a class="opcoes" href="sair.php">LOGOUT</a>
+         </nav>
          
          <div class="hamburger">
          <div id="bar1" class="bar"></div>
@@ -37,6 +50,7 @@
                <li class="menu-item"><a href="#" class="menu-link">Vantagens</a></li>
                <li class="menu-item"><a href="tela-cadastro-imovel.php" class="menu-link">Cadastrar imoveis</a></li>
                <li class="menu-item"><a href="tela-meus-imoveis.php" class="menu-link">Meus imoveis</a></li>
+               <li class="menu-item"><a href="sair.php" class="menu-link">LOGOUT</a></li>
             </ul>
          </nav>
       </aside>
@@ -45,7 +59,7 @@
     <table id="tabela1">
       <tr>
          <td>
-            <img src="./img/s_lupa.png" alt="">
+            <img id="img" src="./img/s_lupa.png" alt="">
          </td>
          <td>
             <p id="p1">Facilidade e praticidade na procura por imoveis para aluguel temporário.</p>
@@ -59,7 +73,7 @@
             <p id="p2">Mais diversidade de opções de escolha, ex: preço, tipo,  e etc.</p>
          </td>
          <td>
-            <img src="./img/s_mais.png" alt="">
+            <img id="img" src="./img/s_mais.png" alt="">
          </td>
       </tr>
     </table>
@@ -67,13 +81,18 @@
     <table id="tabela3">
       <tr>
          <td>
-            <img src="./img/s_negocios.png" alt="">
+            <img id="img" src="./img/s_negocios.png" alt="">
          </td>
          <td>
             <p id="p3">Negociações rápidas e seguras feita diretamente pela ferramenta Whatsapp.</p>
          </td>
       </tr>
     </table>
+   <lo class="lista">
+      <li class="odl">Facilidade e praticidade na procura por imoveis para aluguel temporário;</li>
+      <li class="odl">Mais diversidade de opções de escolha, ex: preço, tipo,  e etc;</li>
+      <li class="odl">Negociações rápidas e seguras feita diretamente pela ferramenta Whatsapp.</li>
+   </lo>
    
     <div class="centro">
       <a href="https://discord.com/"><img class="icones" src="img/discord.svg"></a>
